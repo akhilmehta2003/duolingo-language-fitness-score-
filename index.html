@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duolingo Language Fitness Score - PM Prototype</title>
+  <!-- Google Fonts: Nunito is the closest matches to Duolingo's custom font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- canvas-confetti for screen 6 celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Background decorative elements -->
+  <div class="bg-decoration circle-1"></div>
+  <div class="bg-decoration circle-2"></div>
+
+  <div class="presentation-container">
+    
+    <!-- LEFT PANEL: PM Case Study & Interactive Controls -->
+    <aside class="pm-panel">
+      <header class="pm-header">
+        <div class="duo-brand">
+          <svg class="duo-mini-logo" viewBox="0 0 100 100" width="40" height="40">
+            <circle cx="50" cy="50" r="45" fill="#58cc02"/>
+            <ellipse cx="38" cy="40" rx="10" ry="12" fill="#fff"/>
+            <ellipse cx="62" cy="40" rx="10" ry="12" fill="#fff"/>
+            <circle cx="38" cy="42" r="5" fill="#000"/>
+            <circle cx="62" cy="42" r="5" fill="#000"/>
+            <path d="M 38 62 Q 50 72 62 62" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+            <path d="M 45 48 Q 50 40 55 48" fill="none" stroke="#ff9600" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h1>Duolingo</h1>
+            <span class="badge premium-badge">NEW FEATURE PROTOTYPE</span>
+          </div>
+        </div>
+        <h2>Language Fitness Score</h2>
+        <p class="subtitle">A PM case study and high-fidelity prototype demonstrating proficiency-based user experience.</p>
+      </header>
+
+      <!-- Case Study Navigation Tabs -->
+      <nav class="case-study-tabs">
+        <button class="tab-btn active" data-tab="tab-overview">Overview</button>
+        <button class="tab-btn" data-tab="tab-problem">Problem & Insight</button>
+        <button class="tab-btn" data-tab="tab-solution">Solution</button>
+        <button class="tab-btn" data-tab="tab-impact">Expected Impact</button>
+      </nav>
+
+      <!-- Case Study Tab Content -->
+      <div class="case-study-content">
+        <!-- Overview -->
+        <section id="tab-overview" class="tab-section active">
+          <div class="case-card">
+            <h3>Measuring Real Proficiency</h3>
+            <p>While streak counts and XP measure <strong>daily engagement</strong>, they fail to answer a learner's most critical question: <em>"How fluent am I?"</em></p>
+            <p>The <strong>Language Fitness Score (LFS)</strong> aggregates performance metrics across all cognitive language dimensions to output a dynamic, CEFR-aligned index from 0 to 100.</p>
+            <div class="metric-row">
+              <div class="metric-box">
+                <span class="m-val">CEFR</span>
+                <span class="m-lbl">Aligned Index</span>
+              </div>
+              <div class="metric-box">
+                <span class="m-val">5</span>
+                <span class="m-lbl">Core Dimensions</span>
+              </div>
+              <div class="metric-box">
+                <span class="m-val">AI</span>
+                <span class="m-lbl">Personalized Plan</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Problem & Insight -->
+        <section id="tab-problem" class="tab-section">
+          <div class="case-card">
+            <span class="tag-alert tag-problem">THE CHALLENGE</span>
+            <h3>Streak Anxiety vs. Real Fluency</h3>
+            <blockquote>
+              "I have a 450-day streak in Spanish, but I froze when trying to order a coffee in Madrid."
+              <cite>— Duolingo User Interview</cite>
+            </blockquote>
+            <p><strong>The Core Problem:</strong> Gamification mechanics (streaks, hearts, XP) can create hollow habits. Users optimize for keeping the streak alive rather than building communicative confidence.</p>
+            <p><strong>The Insight:</strong> Users have an intrinsic desire for <em>competence</em>. Transitioning users from extrinsic rewards (streaks) to intrinsic progress indicators (proficiency) increases long-term retention and satisfaction.</p>
+          </div>
+        </section>
+
+        <!-- Solution -->
+        <section id="tab-solution" class="tab-section">
+          <div class="case-card">
+            <span class="tag-alert tag-solution">THE PROPOSED SOLUTION</span>
+            <h3>Language Fitness Score</h3>
+            <p>A multi-dimensional fluency dashboard directly integrated into the core Duolingo journey:</p>
+            <ul class="bullet-list">
+              <li><strong>Dynamic Scoring:</strong> Weighted scores across 5 sub-skills: Reading, Listening, Speaking, Writing, and Vocabulary.</li>
+              <li><strong>Skill Gap Analysis:</strong> Translates performance data into actionable "opportunities" (e.g. Pronunciation Accuracy: 68%).</li>
+              <li><strong>AI-Driven Roadmap:</strong> Automatically structures a 4-week practice schedule based on the user's weaknesses.</li>
+              <li><strong>Real-Life Readiness:</strong> Translates abstract percentage metrics into situational confidence indicators (e.g., Hotel Check-in: 70% ready).</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Expected Impact -->
+        <section id="tab-impact" class="tab-section">
+          <div class="case-card">
+            <span class="tag-alert tag-impact">BUSINESS CASE</span>
+            <h3>Expected Impact & Metrics</h3>
+            <p>Introducing LFS drives both engagement metrics and premium subscription values:</p>
+            <table class="impact-table">
+              <thead>
+                <tr>
+                  <th>Product Metric</th>
+                  <th>Target Impact</th>
+                  <th>Strategic Lever</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>D30 Retention</strong></td>
+                  <td class="pos-change">+15%</td>
+                  <td>Learners feel actual growth; reduces streak-break churn.</td>
+                </tr>
+                <tr>
+                  <td><strong>Lesson Completion</strong></td>
+                  <td class="pos-change">+12%</td>
+                  <td>Targeted practice paths make lesson suggestions feel highly relevant.</td>
+                </tr>
+                <tr>
+                  <td><strong>Premium Conversion</strong></td>
+                  <td class="pos-change">+8%</td>
+                  <td>Locking detailed AI Roadmaps and gap practice reviews behind Super Duolingo.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- CONTROL PANEL FOR PROTOTYPE -->
+      <section class="control-panel">
+        <h3>Prototype Simulator Controls</h3>
+        <p class="control-help">Interact with the mobile screen directly, or use these quick triggers to simulate events.</p>
+        <div class="control-buttons">
+          <button class="ctrl-btn pulse-anim" id="btn-complete-lesson">
+            <span>⚡ Sim Speaking Lesson</span>
+            <span class="bubble-tag">+2 Score</span>
+          </button>
+          <button class="ctrl-btn secondary" id="btn-reset-prototype">🔄 Reset Score to 78</button>
+        </div>
+        <div class="view-jumps">
+          <span class="jump-lbl">Direct Navigate:</span>
+          <div class="jump-buttons">
+            <button class="jump-btn" data-target="home">Home (S1)</button>
+            <button class="jump-btn" data-target="fitness">Dashboard (S2)</button>
+            <button class="jump-btn" data-target="opportunities">Gaps (S3)</button>
+            <button class="jump-btn" data-target="roadmap">Roadmap (S4)</button>
+            <button class="jump-btn" data-target="readiness">Readiness (S5)</button>
+          </div>
+        </div>
+        <div class="theme-control">
+          <span>Simulation Theme:</span>
+          <button id="btn-toggle-dark-mode" class="theme-toggle-btn">
+            <span class="mode-icon">🌙</span> <span class="mode-text">Switch to Dark Mode</span>
+          </button>
+        </div>
+      </section>
+    </aside>
+
+    <!-- RIGHT PANEL: iPhone 15 Pro Frame Mockup -->
+    <main class="phone-wrapper">
+      <div class="iphone-15-pro">
+        <!-- Physical Features -->
+        <div class="side-button action-btn"></div>
+        <div class="side-button vol-up"></div>
+        <div class="side-button vol-down"></div>
+        <div class="side-button power-btn"></div>
+
+        <div class="iphone-screen">
+          <!-- Dynamic Island -->
+          <div class="dynamic-island">
+            <div class="island-camera"></div>
+            <div class="island-sensor"></div>
+          </div>
+
+          <!-- Status Bar -->
+          <div class="status-bar">
+            <span class="status-time" id="phone-time">09:41</span>
+            <div class="status-icons">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.07 19.58 10.48 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+              </svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+              <!-- Battery -->
+              <div class="battery-icon">
+                <div class="battery-level"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- APP CONTENT WINDOW -->
+          <div class="app-window" id="app-window-root">
+            
+            <!-- TOP STATS HEADER (Streak, Gems, Hearts) -->
+            <header class="app-header">
+              <div class="header-stat">
+                <span class="stat-emoji">🔥</span>
+                <span class="stat-value" id="header-streak">45</span>
+              </div>
+              <div class="header-stat">
+                <span class="stat-emoji">💎</span>
+                <span class="stat-value" id="header-gems">1,240</span>
+              </div>
+              <div class="header-stat">
+                <span class="stat-emoji">❤️</span>
+                <span class="stat-value" id="header-hearts">5</span>
+              </div>
+              <!-- Course selector -->
+              <div class="header-lang">
+                <span class="flag-emoji">🇪🇸</span>
+              </div>
+            </header>
+
+            <!-- APP SCREENS CONTAINER (holds the active screen views) -->
+            <div class="screens-viewport">
+              
+              <!-- SCREEN 1: HOME PATH -->
+              <div class="screen active" id="screen-home">
+                <div class="screen-scrollable">
+                  
+                  <!-- PREMIUM FITNESS SCORE CARD -->
+                  <div class="premium-score-card shadow-3d" id="home-fitness-card">
+                    <div class="card-shimmer"></div>
+                    <div class="card-badge">
+                      <svg class="sparkle-icon" viewBox="0 0 24 24" width="12" height="12">
+                        <path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" fill="#fff"/>
+                      </svg>
+                      PREMIUM INSIGHTS
+                    </div>
+                    <div class="card-body">
+                      <div class="card-main-info">
+                        <div class="card-text">
+                          <span class="card-category">LANGUAGE FITNESS SCORE</span>
+                          <h4 class="card-score-title"><span class="dynamic-score">78</span><span class="score-denominator">/100</span></h4>
+                          <p class="card-level-desc">Level: <strong class="dynamic-level">Intermediate Speaker</strong></p>
+                        </div>
+                        <div class="card-avatar-container">
+                          <!-- Minimal animated SVG owl -->
+                          <svg class="avatar-owl" viewBox="0 0 100 100" width="70" height="70">
+                            <defs>
+                              <linearGradient id="owlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#7bf00c"/>
+                                <stop offset="100%" stop-color="#58cc02"/>
+                              </linearGradient>
+                            </defs>
+                            <!-- Body -->
+                            <rect x="20" y="20" width="60" height="65" rx="30" fill="url(#owlGrad)"/>
+                            <!-- Wings -->
+                            <path d="M 18 45 C 10 50, 10 70, 20 75" fill="none" stroke="#58cc02" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M 82 45 C 90 50, 90 70, 80 75" fill="none" stroke="#58cc02" stroke-width="8" stroke-linecap="round"/>
+                            <!-- Eyes background -->
+                            <ellipse cx="38" cy="45" rx="14" ry="16" fill="#fff"/>
+                            <ellipse cx="62" cy="45" rx="14" ry="16" fill="#fff"/>
+                            <!-- Eyes pupils -->
+                            <circle class="pupil" cx="38" cy="45" r="7" fill="#4c9c00"/>
+                            <circle class="pupil-center" cx="38" cy="44" r="3" fill="#000"/>
+                            <circle class="pupil" cx="62" cy="45" r="7" fill="#4c9c00"/>
+                            <circle class="pupil-center" cx="62" cy="44" r="3" fill="#000"/>
+                            <!-- Beak -->
+                            <polygon points="50,52 44,45 56,45" fill="#ff9600"/>
+                            <!-- Feet -->
+                            <circle cx="40" cy="85" r="6" fill="#ff9600"/>
+                            <circle cx="60" cy="85" r="6" fill="#ff9600"/>
+                          </svg>
+                        </div>
+                      </div>
+
+                      <!-- Progress Bar -->
+                      <div class="card-progress-wrapper">
+                        <div class="card-progress-container">
+                          <div class="card-progress-bar progress-bar-animate" id="home-progress-bar" style="width: 78%;"></div>
+                        </div>
+                        <span class="card-progress-percentage dynamic-percentage">78%</span>
+                      </div>
+                      
+                      <button class="btn-3d btn-primary" id="btn-view-insights">
+                        <span>View Insights</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                          <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- PATH CONTENT (Duplicates the feeling of the learning tree) -->
+                  <div class="learning-tree">
+                    <div class="unit-banner">
+                      <div class="unit-banner-info">
+                        <h3>Unit 3</h3>
+                        <p>Discuss travel plans, ask for hotel rooms</p>
+                      </div>
+                      <div class="unit-guidebook">📖 Guidebook</div>
+                    </div>
+
+                    <div class="path-nodes">
+                      <!-- Node 1 (Active) -->
+                      <div class="path-node-wrapper pos-center">
+                        <div class="path-node active-node clickable-node">
+                          <div class="node-ring"></div>
+                          <span class="node-icon">✈️</span>
+                        </div>
+                        <div class="node-popup">START</div>
+                      </div>
+
+                      <!-- Node 2 -->
+                      <div class="path-node-wrapper pos-left">
+                        <div class="path-node completed-node">
+                          <span class="node-icon">🔑</span>
+                        </div>
+                      </div>
+
+                      <!-- Node 3 -->
+                      <div class="path-node-wrapper pos-right">
+                        <div class="path-node locked-node">
+                          <span class="node-icon">💼</span>
+                        </div>
+                      </div>
+
+                      <!-- Node 4 (Chest) -->
+                      <div class="path-node-wrapper pos-center">
+                        <div class="path-node chest-node">
+                          <span class="node-icon">🎁</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SCREEN 2: DETAILS DASHBOARD (Also houses Gaps, Roadmap, Readiness sub-sections for smooth single screen scrolling experience like Duolingo profile tabs) -->
+              <div class="screen" id="screen-fitness">
+                
+                <!-- Sub-nav headers -->
+                <div class="fitness-header-sticky">
+                  <button class="back-btn-round" id="btn-fitness-back">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                    </svg>
+                  </button>
+                  <h3>Fluency Fitness</h3>
+                  <div style="width: 40px;"></div> <!-- Spacer -->
+                </div>
+
+                <div class="screen-scrollable pb-navbar">
+                  
+                  <!-- CIRCULAR SCORE CHART & HEADER -->
+                  <section class="section-score-summary text-center">
+                    <div class="circle-chart-container">
+                      <svg class="circular-chart" viewBox="0 0 36 36">
+                        <path class="circle-bg"
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <path class="circle-fill fill-animate"
+                          id="details-circular-progress"
+                          stroke-dasharray="78, 100"
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                      </svg>
+                      <div class="circle-text-center">
+                        <div class="score-num"><span class="dynamic-score">78</span></div>
+                        <div class="score-max">/100</div>
+                      </div>
+                    </div>
+                    <h4 class="fitness-level-title dynamic-level">Intermediate Speaker</h4>
+                    <p class="fitness-subtext">Equivalent to **CEFR B1 Threshold**</p>
+                    <div class="score-progress-message">
+                      🏆 <span id="points-to-next">12</span> points until <strong>Advanced (B2)</strong>
+                    </div>
+                  </section>
+
+                  <!-- FIVE CORE DIMENSIONS PROGRESS BARS -->
+                  <section class="fitness-section shadow-3d">
+                    <h4 class="section-title">Sub-Skill Breakdown</h4>
+                    
+                    <!-- Reading -->
+                    <div class="subskill-row">
+                      <div class="subskill-meta">
+                        <div class="subskill-name">
+                          <span>📖 Reading</span>
+                          <span class="subskill-badge badge-blue">Proficient</span>
+                        </div>
+                        <span class="subskill-value"><span id="val-reading">82</span>/100</span>
+                      </div>
+                      <div class="progress-container flex-grow">
+                        <div class="progress-bar bar-blue" id="bar-reading" style="width: 82%;"></div>
+                      </div>
+                      <div class="subskill-trend trend-up">↑ +2 this week</div>
+                    </div>
+
+                    <!-- Listening -->
+                    <div class="subskill-row">
+                      <div class="subskill-meta">
+                        <div class="subskill-name">
+                          <span>🎧 Listening</span>
+                          <span class="subskill-badge badge-purple">Conversational</span>
+                        </div>
+                        <span class="subskill-value"><span id="val-listening">75</span>/100</span>
+                      </div>
+                      <div class="progress-container">
+                        <div class="progress-bar bar-purple" id="bar-listening" style="width: 75%;"></div>
+                      </div>
+                      <div class="subskill-trend trend-up">↑ +4 this week</div>
+                    </div>
+
+                    <!-- Speaking -->
+                    <div class="subskill-row" id="row-speaking">
+                      <div class="subskill-meta">
+                        <div class="subskill-name">
+                          <span>🗣️ Speaking</span>
+                          <span class="subskill-badge badge-orange" id="badge-speaking">Conversational</span>
+                        </div>
+                        <span class="subskill-value"><span id="val-speaking">70</span>/100</span>
+                      </div>
+                      <div class="progress-container">
+                        <div class="progress-bar bar-orange" id="bar-speaking" style="width: 70%;"></div>
+                      </div>
+                      <div class="subskill-trend trend-up" id="trend-speaking">↑ +5 this week</div>
+                    </div>
+
+                    <!-- Writing -->
+                    <div class="subskill-row">
+                      <div class="subskill-meta">
+                        <div class="subskill-name">
+                          <span>✍️ Writing</span>
+                          <span class="subskill-badge badge-green">Proficient</span>
+                        </div>
+                        <span class="subskill-value"><span id="val-writing">84</span>/100</span>
+                      </div>
+                      <div class="progress-container">
+                        <div class="progress-bar bar-green" id="bar-writing" style="width: 84%;"></div>
+                      </div>
+                      <div class="subskill-trend trend-neutral">Stable</div>
+                    </div>
+
+                    <!-- Vocabulary -->
+                    <div class="subskill-row">
+                      <div class="subskill-meta">
+                        <div class="subskill-name">
+                          <span>📚 Vocabulary</span>
+                          <span class="subskill-badge badge-gold">Conversational</span>
+                        </div>
+                        <span class="subskill-value"><span id="val-vocabulary">80</span>/100</span>
+                      </div>
+                      <div class="progress-container">
+                        <div class="progress-bar bar-gold" id="bar-vocabulary" style="width: 80%;"></div>
+                      </div>
+                      <div class="subskill-trend trend-up">↑ +1 this week</div>
+                    </div>
+
+                  </section>
+
+                  <!-- SCREEN 3: SKILL GAP ANALYSIS ("Your Biggest Opportunities") -->
+                  <section class="fitness-section">
+                    <div class="section-header-row">
+                      <h4 class="section-title">Your Biggest Opportunities</h4>
+                      <span class="badge info-badge">AI INSIGHT</span>
+                    </div>
+                    <p class="section-intro">Master these target skills to unlock significant level score boosts.</p>
+
+                    <!-- Opportunity Card 1 (Pronunciation) -->
+                    <div class="opportunity-card shadow-3d op-orange" id="op-card-pronunciation">
+                      <div class="op-card-left">
+                        <span class="op-icon">🗣️</span>
+                        <div class="op-info">
+                          <h5>Pronunciation Accuracy</h5>
+                          <div class="op-bar-label">
+                            <span>Current: <strong id="op-pron-curr">68%</strong></span>
+                            <span>Target: <strong>80%</strong></span>
+                          </div>
+                          <div class="op-progress-container">
+                            <div class="op-progress-bar bar-orange" id="op-bar-pron" style="width: 68%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="btn-3d btn-op btn-op-orange" id="btn-improve-pron">Improve</button>
+                    </div>
+
+                    <!-- Opportunity Card 2 (Listening Speed) -->
+                    <div class="opportunity-card shadow-3d op-purple">
+                      <div class="op-card-left">
+                        <span class="op-icon">🎧</span>
+                        <div class="op-info">
+                          <h5>Listening Speed</h5>
+                          <div class="op-bar-label">
+                            <span>Current: <strong>72%</strong></span>
+                            <span>Target: <strong>85%</strong></span>
+                          </div>
+                          <div class="op-progress-container">
+                            <div class="op-progress-bar bar-purple" style="width: 72%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="btn-3d btn-op btn-op-purple" onclick="alert('This triggers listening exercise simulations. Try the orange Speaking simulation for interactive prototype demo!')">Improve</button>
+                    </div>
+
+                    <!-- Opportunity Card 3 (Travel Vocabulary) -->
+                    <div class="opportunity-card shadow-3d op-gold">
+                      <div class="op-card-left">
+                        <span class="op-icon">📚</span>
+                        <div class="op-info">
+                          <h5>Travel Vocabulary</h5>
+                          <div class="op-bar-label">
+                            <span>Current: <strong>65%</strong></span>
+                            <span>Target: <strong>85%</strong></span>
+                          </div>
+                          <div class="op-progress-container">
+                            <div class="op-progress-bar bar-gold" style="width: 65%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="btn-3d btn-op btn-op-gold" onclick="alert('Try the orange Speaking simulation for interactive prototype demo!')">Improve</button>
+                    </div>
+                  </section>
+
+                  <!-- SCREEN 4: AI LEARNING ROADMAP -->
+                  <section class="fitness-section">
+                    <div class="section-header-row">
+                      <h4 class="section-title">Your Personalized Fluency Plan</h4>
+                      <span class="badge premium-badge">SUPER DUOLINGO</span>
+                    </div>
+                    <p class="section-intro text-small">Dynamic AI roadmap calibrated to clear your specific language hurdles.</p>
+
+                    <!-- Roadmap Visual -->
+                    <div class="roadmap-timeline">
+                      
+                      <!-- Week 1 -->
+                      <div class="timeline-item active">
+                        <div class="timeline-marker">
+                          <span class="marker-circle">1</span>
+                          <span class="marker-line"></span>
+                        </div>
+                        <div class="timeline-box shadow-3d">
+                          <span class="roadmap-week">WEEK 1</span>
+                          <h6>Improve Listening</h6>
+                          <p>Short dialogues, focus on rapid pronunciation nuances.</p>
+                          <div class="roadmap-tag tag-listening">5 Lessons</div>
+                        </div>
+                      </div>
+
+                      <!-- Week 2 -->
+                      <div class="timeline-item">
+                        <div class="timeline-marker">
+                          <span class="marker-circle">2</span>
+                          <span class="marker-line"></span>
+                        </div>
+                        <div class="timeline-box shadow-3d">
+                          <span class="roadmap-week">WEEK 2</span>
+                          <h6>Travel Vocabulary</h6>
+                          <p>Focusing on airport, transit, directions, hotel checks.</p>
+                          <div class="roadmap-tag tag-vocab">8 Lessons</div>
+                        </div>
+                      </div>
+
+                      <!-- Week 3 -->
+                      <div class="timeline-item">
+                        <div class="timeline-marker">
+                          <span class="marker-circle">3</span>
+                          <span class="marker-line"></span>
+                        </div>
+                        <div class="timeline-box shadow-3d">
+                          <span class="roadmap-week">WEEK 3</span>
+                          <h6>Speaking Practice</h6>
+                          <p>Interactive AI chats focused on natural accent rhythms.</p>
+                          <div class="roadmap-tag tag-speaking">6 Lessons</div>
+                        </div>
+                      </div>
+
+                      <!-- Week 4 -->
+                      <div class="timeline-item">
+                        <div class="timeline-marker">
+                          <span class="marker-circle">4</span>
+                        </div>
+                        <div class="timeline-box shadow-3d">
+                          <span class="roadmap-week">WEEK 4</span>
+                          <h6>Conversation Challenge</h6>
+                          <p>Full real-time roleplay scenarios with local speakers.</p>
+                          <div class="roadmap-tag tag-challenge">1 Assessment</div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- Roadmap Projections Card -->
+                    <div class="roadmap-projection-card text-center">
+                      <div class="projection-row">
+                        <div class="proj-item">
+                          <span class="p-lbl">Projected Score</span>
+                          <span class="p-val score-highlight">84/100</span>
+                        </div>
+                        <div class="proj-divider"></div>
+                        <div class="proj-item">
+                          <span class="p-lbl">Conversational Readiness</span>
+                          <span class="p-val font-accent" id="readiness-days">21 Days</span>
+                        </div>
+                      </div>
+                      <p class="proj-footnote">Projected timelines based on daily 15-minute exercises.</p>
+                    </div>
+
+                  </section>
+
+                  <!-- SCREEN 5: REAL-LIFE READINESS -->
+                  <section class="fitness-section">
+                    <h4 class="section-title">Can You Handle These Situations?</h4>
+                    <p class="section-intro">Your estimated capability scores in common real-world environments.</p>
+
+                    <div class="readiness-grid">
+                      <!-- Card 1 -->
+                      <div class="readiness-card shadow-3d">
+                        <span class="readiness-emoji">✈️</span>
+                        <h5>Airport Travel</h5>
+                        <div class="readiness-bar-wrap">
+                          <div class="readiness-progress">
+                            <div class="readiness-bar bar-blue" id="ready-airport-bar" style="width: 85%;"></div>
+                          </div>
+                          <span class="readiness-num" id="ready-airport-val">85%</span>
+                        </div>
+                        <span class="readiness-desc desc-green">Highly Prepared</span>
+                      </div>
+
+                      <!-- Card 2 -->
+                      <div class="readiness-card shadow-3d">
+                        <span class="readiness-emoji">☕</span>
+                        <h5>Ordering Coffee</h5>
+                        <div class="readiness-bar-wrap">
+                          <div class="readiness-progress">
+                            <div class="readiness-bar bar-green" id="ready-coffee-bar" style="width: 95%;"></div>
+                          </div>
+                          <span class="readiness-num" id="ready-coffee-val">95%</span>
+                        </div>
+                        <span class="readiness-desc desc-green">Mastered</span>
+                      </div>
+
+                      <!-- Card 3 -->
+                      <div class="readiness-card shadow-3d">
+                        <span class="readiness-emoji">🏨</span>
+                        <h5>Hotel Check-In</h5>
+                        <div class="readiness-bar-wrap">
+                          <div class="readiness-progress">
+                            <div class="readiness-bar bar-yellow" id="ready-hotel-bar" style="width: 70%;"></div>
+                          </div>
+                          <span class="readiness-num" id="ready-hotel-val">70%</span>
+                        </div>
+                        <span class="readiness-desc desc-orange">Moderate Practice</span>
+                      </div>
+
+                      <!-- Card 4 -->
+                      <div class="readiness-card shadow-3d">
+                        <span class="readiness-emoji">🚕</span>
+                        <h5>Taxi Driver Chat</h5>
+                        <div class="readiness-bar-wrap">
+                          <div class="readiness-progress">
+                            <div class="readiness-bar bar-red" id="ready-taxi-bar" style="width: 60%;"></div>
+                          </div>
+                          <span class="readiness-num" id="ready-taxi-val">60%</span>
+                        </div>
+                        <span class="readiness-desc desc-red">Needs Work</span>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+
+            <!-- INTERACTIVE OVERLAYS (SCREEN 3 MICRO-INTERACTION & SCREEN 6 CELEBRATION) -->
+            
+            <!-- Speaking Lesson Simulation (Screen 3 Mini-Game Popup) -->
+            <div class="overlay" id="overlay-speaking-lesson">
+              <div class="speaking-lesson-container shadow-3d">
+                <div class="lesson-header">
+                  <button class="lesson-close" id="btn-close-lesson">×</button>
+                  <div class="lesson-progress-container">
+                    <div class="lesson-progress-bar" style="width: 60%;"></div>
+                  </div>
+                </div>
+                
+                <div class="lesson-body text-center">
+                  <span class="lesson-type-label">SPEAKING OPPORTUNITY</span>
+                  <h4 class="lesson-prompt">Repeat this phrase in Spanish:</h4>
+                  <div class="phrase-card">
+                    <span class="phrase-speaker">🔊</span>
+                    <div>
+                      <p class="phrase-target">"Disculpe, ¿dónde está la estación?"</p>
+                      <p class="phrase-meaning">"Excuse me, where is the station?"</p>
+                    </div>
+                  </div>
+
+                  <div class="mic-section">
+                    <button class="mic-button" id="btn-mic">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+                      </svg>
+                    </button>
+                    <p class="mic-status" id="mic-text">Tap the microphone to speak</p>
+                  </div>
+                </div>
+
+                <div class="lesson-footer">
+                  <button class="btn-3d btn-primary disabled" id="btn-submit-speak" disabled>Submit Answer</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- SCREEN 6: CELEBRATION MODAL OVERLAY -->
+            <div class="overlay" id="overlay-celebration">
+              <div class="celebration-content text-center">
+                <canvas id="celebration-confetti-canvas"></canvas>
+                <div class="celebration-header">
+                  <span class="emoji-huge animate-pop">🎉</span>
+                  <h2>Congratulations!</h2>
+                  <p class="celebration-subtitle">Language Fitness Score Increased</p>
+                </div>
+
+                <!-- Animated score jump display -->
+                <div class="celebration-score-box">
+                  <div class="score-flow">
+                    <span class="score-old" id="celeb-score-old">78</span>
+                    <span class="score-arrow">➔</span>
+                    <span class="score-new" id="celeb-score-new">80</span>
+                  </div>
+                  <div class="score-denominator">/ 100</div>
+                </div>
+
+                <p class="celebration-cheer">You are now closer to conversational fluency!</p>
+
+                <!-- Mascot Vector Animation -->
+                <div class="mascot-holder">
+                  <svg class="celebrating-owl animate-bounce" viewBox="0 0 100 100" width="140" height="140">
+                    <!-- Party Hat -->
+                    <polygon points="50,15 35,5 65,5" fill="#a560e8" transform="rotate(-15 50 15)"/>
+                    <circle cx="53" cy="3" r="3" fill="#ff9600"/>
+                    
+                    <!-- Body -->
+                    <rect x="20" y="25" width="60" height="60" rx="30" fill="url(#owlGrad)"/>
+                    
+                    <!-- Dancing Wings -->
+                    <path class="wing-left" d="M 18 55 C 5 40, 5 30, 15 35" fill="none" stroke="#58cc02" stroke-width="8" stroke-linecap="round"/>
+                    <path class="wing-right" d="M 82 55 C 95 40, 95 30, 85 35" fill="none" stroke="#58cc02" stroke-width="8" stroke-linecap="round"/>
+                    
+                    <!-- Eyes Happy (closed arcs) -->
+                    <path d="M 28 50 Q 38 40 48 50" fill="none" stroke="#4c9c00" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M 52 50 Q 62 40 72 50" fill="none" stroke="#4c9c00" stroke-width="5" stroke-linecap="round"/>
+                    
+                    <!-- Beak (cheering wide open) -->
+                    <ellipse cx="50" cy="58" rx="7" ry="9" fill="#d33c00"/>
+                    <polygon points="50,56 44,52 56,52" fill="#ff9600"/>
+                    
+                    <!-- Feet -->
+                    <circle cx="40" cy="85" r="6" fill="#ff9600"/>
+                    <circle cx="60" cy="85" r="6" fill="#ff9600"/>
+                  </svg>
+                </div>
+
+                <button class="btn-3d btn-primary" id="btn-close-celebration">Continue</button>
+              </div>
+            </div>
+
+            <!-- BOTTOM NAVIGATION BAR -->
+            <nav class="app-navbar">
+              <button class="nav-item active" data-screen="home">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <span class="nav-label">Learn</span>
+              </button>
+              
+              <button class="nav-item premium-nav" data-screen="fitness" id="nav-fitness-icon">
+                <div class="pulse-indicator"></div>
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <!-- Custom graph/score icon representing language fitness -->
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
+                </svg>
+                <span class="nav-label">Fitness</span>
+              </button>
+
+              <button class="nav-item" onclick="alert('Leaderboard screen not available in this PM prototype. Tap Home or Fitness!')">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.83 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                </svg>
+                <span class="nav-label">Shields</span>
+              </button>
+
+              <button class="nav-item" onclick="alert('Profile screen not available in this PM prototype. Tap Home or Fitness!')">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                <span class="nav-label">Profile</span>
+              </button>
+            </nav>
+
+          </div> <!-- End App Window Root -->
+
+          <!-- Physical Screen Bottom Bar -->
+          <div class="iphone-home-indicator"></div>
+        </div>
+      </div>
+    </main>
+    
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
